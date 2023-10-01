@@ -17,7 +17,8 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
     //? Colors
     brightness: Brightness.light,
-    // scaffoldBackgroundColor: AppColors.scaffoldColor,
+    scaffoldBackgroundColor: AppColors.appBgColor,
+
     // primaryColor: AppColors.primaryColor,
     // splashColor: AppColors.splashColor,
     // highlightColor: Colors.transparent,
@@ -25,16 +26,18 @@ class AppThemes {
     // hoverColor: AppColors.successColor,
     // dividerColor: AppColors.dividerColor,
     // dialogBackgroundColor: AppColors.scaffoldColor,
-    // cardColor: AppColors.cardColor,
+    cardColor: AppColors.secondaryColor,
     // hintColor: AppColors.hintColor,
     // shadowColor: AppColors.shadowColor,
     // secondaryHeaderColor: AppColors.secondaryColor,
     // focusColor: AppColors.focusColor,
     // canvasColor: AppColors.scaffoldColor,
 
+    //? Text
+    textTheme: const TextTheme(),
     //? App Bar
     appBarTheme: const AppBarTheme(
-      // backgroundColor: AppColors.appBarBackgroundColor,
+      backgroundColor: AppColors.appBgColor,
       // foregroundColor: AppColors.appBarForegroundColor,
       elevation: AppValues.appBarButtonsElevation,
       toolbarHeight: AppValues.appBarHeight,
@@ -63,13 +66,13 @@ class AppThemes {
         ),
         borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
-          color: AppColors.bottomNavBarSelectedItemColor,
-          width: AppValues.textFieldBorderWidth,
-        ),
-        borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
-      ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderSide: const BorderSide(
+      //     color: AppColors.bottomNavBarSelectedItemColor,
+      //     width: AppValues.textFieldBorderWidth,
+      //   ),
+      //   borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
+      // ),
       errorBorder: OutlineInputBorder(
         borderSide: const BorderSide(
           color: AppColors.errorColor,
@@ -93,7 +96,7 @@ class AppThemes {
 
     //? Card
     cardTheme: const CardTheme(
-      color: Colors.white,
+      color: AppColors.secondaryColor,
       shadowColor: AppColors.shadowColor,
       elevation: AppValues.cardElevation,
       margin: EdgeInsets.symmetric(horizontal: AppValues.cardElevation),
@@ -137,7 +140,7 @@ class AppThemes {
     //? List Tile
     listTileTheme: const ListTileThemeData(
       iconColor: AppColors.primaryColor,
-      textColor: AppColors.primaryColor,
+      textColor: Colors.white,
       contentPadding: EdgeInsets.zero,
       horizontalTitleGap: 0,
       style: ListTileStyle.drawer,

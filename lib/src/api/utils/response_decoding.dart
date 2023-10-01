@@ -1,8 +1,6 @@
 import '../../utils/helpers/firebase_error_recorder.dart';
 import '../exceptions/exceptions.dart';
 import '../exports.dart';
-import '../models/data_container_model.dart';
-import '../models/no_data_model.dart';
 
 dynamic decode<T extends ModelingProtocol>(
   T decodableModel, {
@@ -19,14 +17,9 @@ dynamic decode<T extends ModelingProtocol>(
   final data = mockingData ?? response?.data;
 
   try {
-    if (decodableModel is NoDataModel) return decodableModel.fromJson({'success': mocking ? true : data.statusCode == 200});
-
     if (!paginated) {
       assert(data is List || data is StringKeyedMap);
       return decodableModel.fromJson(data);
-    } else {
-      assert(data is StringKeyedMap);
-      return DataContainerModel.fromjson(data, decodableModel);
     }
   } catch (error, stackTrace) {
     FirebaseErrorRecorder.recordNonFatalError(

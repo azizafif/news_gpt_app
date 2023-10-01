@@ -7,4 +7,3 @@ export '../../widgets/index.dart';
 
 export 'keyed_stateless_widget.dart';
 export '../../utils/extensions/inherited_controller_finder.dart';
-export '../../shared/models/date_picker_config.dart';

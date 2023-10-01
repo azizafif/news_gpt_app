@@ -17,14 +17,14 @@ abstract class PaginationController<S extends RequestPerformer> extends ServingC
     bottomReached = scrollController.position.pixels >= scrollController.position.maxScrollExtent;
     if (bottomReached) {
       update();
-      getNextPage();
+      getNews();
     }
   }
 
   @override
   @mustCallSuper
   void onReady() {
-    getNextPage(fromBeginnig: true);
+    getNews();
     super.onReady();
   }
 
@@ -36,5 +36,5 @@ abstract class PaginationController<S extends RequestPerformer> extends ServingC
     super.onClose();
   }
 
-  void getNextPage({bool fromBeginnig = false});
+  void getNews();
 }

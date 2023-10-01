@@ -1,3 +1,5 @@
+import '../design/constants/app_contants.dart';
+
 class AppEnvironment {
   AppEnvironment._();
 
@@ -6,7 +8,8 @@ class AppEnvironment {
   static bool get mockingEnabled => current == Environment.mock;
   static bool get testingEnabled => current == Environment.test;
 
-  static const String apiKey = '489dcbe11e2581b9c24681d39dfd177a';
+  static const String newsApiKey = 'd0031688756fba6ddd52f963a8788fc3';
+  static const String chatGPTApiKey = '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';
 
   //? Per environment assertions
   static void performEnvironmentAssertions() {
@@ -44,10 +47,10 @@ enum Environment {
     sendTimeout: 0,
     receiveTimeout: 0,
   ),
-  dev(baseUrl: 'https://api.themoviedb.org/3/'),
-  preprod(baseUrl: 'https://api.themoviedb.org/3/'),
+  dev(baseUrl: AppConstants.chatGPTBaseUrl),
+  preprod(baseUrl: AppConstants.chatGPTBaseUrl),
   prod(
-    baseUrl: 'https://api.themoviedb.org/3/',
+    baseUrl: AppConstants.chatGPTBaseUrl,
     connectTimeout: 10000,
     sendTimeout: 20000,
     receiveTimeout: 15000,

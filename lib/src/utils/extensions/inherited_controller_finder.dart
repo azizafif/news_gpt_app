@@ -1,3 +1,4 @@
+import '../../shared/controllers/base_controller.dart';
 import '../../shared/controllers/exports.dart';
 import '../../shared/modules/inherited_controller.dart';
 

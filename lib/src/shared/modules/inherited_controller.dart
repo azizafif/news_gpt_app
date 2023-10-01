@@ -1,3 +1,4 @@
+import '../controllers/base_controller.dart';
 import '../controllers/exports.dart';
 
 class InheritedController<T extends BaseController> extends InheritedWidget {

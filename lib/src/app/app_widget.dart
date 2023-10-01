@@ -6,9 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:news_gpt/src/app/design/app_images.dart';
 import 'package:news_gpt/src/app/design/index.dart';
+import 'package:news_gpt/src/modules/home/module/home_module.dart';
+
+import '../shared/handlers/connectivity_handler.dart';
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  MyApp({super.key}) {
+    ConnectivityHandler.startMonitoring();
+  }
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -26,7 +31,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) => ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -38,8 +43,9 @@ class _MyAppState extends State<MyApp> {
           builder: EasyLoading.init(),
 
           //@ Routing
-          //  initialRoute: signInModule.name,
-          getPages: const [
+          initialRoute: homeModule.name,
+          getPages: [
+            homeModule
             //  signInModule,
             //    signUpModule,
           ],

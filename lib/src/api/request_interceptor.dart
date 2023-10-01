@@ -13,7 +13,7 @@ class _DioRequestInterceptor extends _RequestDebugger {
       sendTimeout: Duration(milliseconds: AppEnvironment.current.sendTimeout),
       receiveTimeout: Duration(milliseconds: AppEnvironment.current.receiveTimeout),
       contentType: applicationJsonContentType,
-      queryParameters: {'api_key': AppEnvironment.apiKey},
+      queryParameters: {'api_key': AppEnvironment.chatGPTApiKey},
     ),
   );
 
@@ -25,7 +25,7 @@ class _DioRequestInterceptor extends _RequestDebugger {
     // Since baseDio options are settled at instantiation phase,
     // we should only check if we had added an interceptor
     // if not, we should just return the pre settled baseDio
-    if (baseDio.interceptors.isNotEmpty) return baseDio;
+    // if (baseDio.interceptors.isNotEmpty) return baseDio;
 
     // No interceptors Added yet, let's add one :)
     baseDio.interceptors
@@ -100,7 +100,7 @@ class _RequestDebugger {
       error.error.toString(),
       error.response?.statusMessage ?? '',
       snackPosition: getx.SnackPosition.BOTTOM,
-      backgroundColor: AppThemes.isLight ? AppColors.errorColor.withOpacity(.05) : AppColors.appBarBackgroundColorDark,
+      backgroundColor: AppColors.errorColor.withOpacity(.05),
       duration: const Duration(seconds: 5),
     );
 

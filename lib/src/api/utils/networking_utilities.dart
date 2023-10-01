@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart' hide State;
 import 'package:dio/dio.dart';
-import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 //* Constants
@@ -13,7 +12,7 @@ String get multipartFormDataContentType => 'multipart/form-data';
 enum RestfullMethods { get, post }
 
 //* TypeDefs
-typedef FutureRequestResult<T> = Future<Either<DioError, T?>>;
+typedef FutureRequestResult<T> = Future<Either<DioException, T?>>;
 typedef StringKeyedMap = Map<String, dynamic>;
 
 //* Utilities
@@ -33,13 +32,4 @@ extension HeadersInjections on StringKeyedMap {
     );
 
   StringKeyedMap addExtraHeaders(StringKeyedMap? extraHeaders) => this..addAll(extraHeaders ?? {});
-}
-
-extension FrenchDateformatting on String {
-  /// #### `2022-10-15` => `15/10/2022`
-  String? get localeFormatted => length == 10 ? DateFormat.yMd(Intl.getCurrentLocale()).format(DateTime.parse(this)) : null;
-
-  /// #### `2022-10-15` => `OCTOBRE 2022`
-  String? get fullMonthYearFormatted =>
-      length == 10 ? DateFormat.yMMMM(Intl.getCurrentLocale()).format(DateTime.parse(this)).toUpperCase() : null;
 }
