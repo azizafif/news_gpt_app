@@ -1,35 +1,95 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_gpt/src/shared/controllers/exports.dart';
 
-import '../../../app/design/index.dart';
 import '../data/models/news_model.dart';
+import '../home_controller.dart';
+import '../news_details_screen.dart';
+import 'expanded_content_widget.dart';
+import 'image_widget.dart';
 
-class NewsCard extends StatelessWidget {
-  const NewsCard({super.key, required this.article});
+class NewsCard extends StatefulWidget {
   final Article article;
+
+  const NewsCard({
+    required this.article,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  NewsCardState createState() => NewsCardState();
+}
+
+class NewsCardState extends State<NewsCard> {
+  bool isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: AppValues.cardMargin, vertical: AppValues.cardMargin / 3),
-      child: ListTile(
-        leading: Container(
-            width: 100.w,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: Image.network(
-              article.image ?? "",
-              fit: BoxFit.cover,
-            )),
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            article.title ?? "",
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-          ).animate().fade(duration: const Duration(milliseconds: 700)).scale(),
-        ),
+    final size = MediaQuery.of(context).size;
+
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 500),
+              bottom: isExpanded ? 40 : 100,
+              width: isExpanded ? size.width * 0.78 : size.width * 0.7,
+              height: isExpanded ? size.height * 0.6 : size.height * 0.5,
+              child: ExpandedContentWidget(article: widget.article),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 500),
+              bottom: isExpanded ? 150 : 100,
+              child: GestureDetector(
+                onPanUpdate: onPanUpdate,
+                onTap: openDetailPage,
+                child: ImageWidget(article: widget.article),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  void openDetailPage() {
+    if (!isExpanded) {
+      context.find<HomeController>().getSummarizedNews(widget.article.description ?? "");
+
+      /// Tap to expand card
+      setState(() => isExpanded = true);
+      return;
+    }
+
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: const Duration(seconds: 1),
+        reverseTransitionDuration: const Duration(seconds: 1),
+        pageBuilder: (context, animation, secondaryAnimation) {
+          final curvedAnimation = CurvedAnimation(
+            parent: animation,
+            curve: const Interval(0, 0.5),
+          );
+
+          return FadeTransition(
+            opacity: curvedAnimation,
+            child: NewsDetailsScreen(
+              article: widget.article,
+              animation: animation,
+            ),
+          );
+        },
       ),
     );
+  }
+
+  void onPanUpdate(DragUpdateDetails details) {
+    if (details.delta.dy < 0) {
+      setState(() {
+        isExpanded = true;
+      });
+    } else if (details.delta.dy > 0) {
+      setState(() {
+        isExpanded = false;
+      });
+    }
   }
 }

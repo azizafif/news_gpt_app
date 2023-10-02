@@ -16,8 +16,10 @@ class SmartScaffold extends StatelessWidget {
     this.bottomSheet,
     this.backgroundColor,
     this.resizeToAvoidBottomInset,
+    this.extendBodyBehindAppBar,
+    this.safeArea = false,
   });
-
+  final bool? extendBodyBehindAppBar;
   final PreferredSizeWidget? appBar;
   final Widget body;
   final Widget? floatingActionButton;
@@ -26,6 +28,7 @@ class SmartScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final Widget? bottomSheet;
   final bool? resizeToAvoidBottomInset;
+  final bool? safeArea;
 
   @override
   Widget build(BuildContext context) => ValueListenableBuilder(
@@ -34,9 +37,10 @@ class SmartScaffold extends StatelessWidget {
             ? GestureDetector(
                 onTap: FocusScope.of(context).unfocus,
                 child: Scaffold(
+                  extendBodyBehindAppBar: extendBodyBehindAppBar ?? false,
                   key: key,
                   appBar: appBar,
-                  body: Platform.isIOS ? SafeArea(child: body) : body,
+                  body: safeArea ?? false ? SafeArea(child: body) : body,
                   floatingActionButton: floatingActionButton,
                   floatingActionButtonLocation: floatingActionButtonLocation ??
                       (Platform.isIOS ? FloatingActionButtonLocation.centerDocked : FloatingActionButtonLocation.centerFloat),

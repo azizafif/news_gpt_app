@@ -8,6 +8,10 @@ import 'package:news_gpt/src/app/design/app_images.dart';
 import 'package:news_gpt/src/app/design/index.dart';
 import 'package:news_gpt/src/modules/home/module/home_module.dart';
 
+import '../modules/authentication/data/services/auth_service.dart';
+import '../modules/authentication/login/module/login_module.dart';
+import '../modules/authentication/signup/module/signUp_module.dart';
+import '../modules/profile/profile_module.dart';
 import '../shared/handlers/connectivity_handler.dart';
 
 class MyApp extends StatefulWidget {
@@ -20,8 +24,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late AuthService _auth;
+
   @override
   void initState() {
+    _auth = AuthService();
     scheduleMicrotask(() async {
       await AppImages.precacheAssets(context);
     });
@@ -43,11 +50,12 @@ class _MyAppState extends State<MyApp> {
           builder: EasyLoading.init(),
 
           //@ Routing
-          initialRoute: homeModule.name,
+          initialRoute: _auth.isUserSignedIn() ? homeModule.name : loginModule.name,
           getPages: [
-            homeModule
-            //  signInModule,
-            //    signUpModule,
+            homeModule,
+            loginModule,
+            signUpModule,
+            profileModule,
           ],
           defaultTransition: Transition.cupertino,
         );

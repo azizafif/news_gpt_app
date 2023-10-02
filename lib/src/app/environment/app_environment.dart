@@ -9,7 +9,7 @@ class AppEnvironment {
   static bool get testingEnabled => current == Environment.test;
 
   static const String newsApiKey = 'd0031688756fba6ddd52f963a8788fc3';
-  static const String chatGPTApiKey = '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';
+  static const String chatGPTApiKey = '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';
 
   //? Per environment assertions
   static void performEnvironmentAssertions() {

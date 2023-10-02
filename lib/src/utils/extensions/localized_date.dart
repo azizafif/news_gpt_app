@@ -1,5 +1,12 @@
-import 'package:intl/intl.dart';
+extension StringFormat on String {
+  String customFormatDateTime() {
+    // Parse the input string as an ISO 8601 datetime
+    DateTime dateTime = DateTime.parse(this);
 
-extension LocalizedDate on DateTime {
-  String get localeFormatted => DateFormat.yMd(Intl.getCurrentLocale()).format(this);
+    // Format the datetime as desired
+    String formattedDateTime =
+        '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
+
+    return formattedDateTime;
+  }
 }

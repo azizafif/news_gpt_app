@@ -1,6 +1,8 @@
 class AppConstants {
   AppConstants._();
 
+  static const String appName = "News Summarizer";
+
 //? ------------------ News API ------------------
   static const String newsBaseUrl = "https://gnews.io/api/v4/";
   static const String topHeadlines = "top-headlines";

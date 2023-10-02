@@ -34,7 +34,7 @@ class NewsServices extends RequestPerformer {
     }
   }
 
-  FutureRequestResult<ChatgptModel> getSummizedNews({required String description}) async {
+  FutureRequestResult<ChatgptModel> getSummarizedNews({required String description}) async {
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ${AppEnvironment.chatGPTApiKey}',

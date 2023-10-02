@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399373126750",
+    "project_id": "news-summarizer-gpt",
+    "storage_bucket": "news-summarizer-gpt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399373126750:android:45bfea6bdd0940308eb8cf",
+        "android_client_info": {
+          "package_name": "com.example.news_gpt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMcnsQ3dyg0eh08MwMmwfHDwQhLcV5w0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

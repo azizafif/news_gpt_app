@@ -11,26 +11,46 @@ class HomeController extends PaginationController<NewsServices> {
   HomeController.serving(super.service);
 
   final articlesList = ObservableValue<List<Article>>(defaultValue: []);
-  final summizedNews = ObservableValue<String>(defaultValue: "");
-  @override
-  getNews() {
-    isLoading = true;
+  final summarizedNews = ObservableValue<String>(defaultValue: "");
+  final isExpanded = ObservableValue<bool>(defaultValue: false);
+  int bottomNarBarcurrentIndex = 0;
 
-    service
-        .getNews(category: "general")
-        .then((result) => result.fold(
-            (error) => log(error.toString()),
-            (data) => {
-                  articlesList.value.addAll(data?.articles as List<Article>),
-                  update(),
-                  isLoading = false,
-                }))
-        .whenComplete(() => isLoading = false);
+  final pageController = PageController(viewportFraction: 0.8);
+  int pageIndex = 0;
+  void incrementNavBarIndex(int index) {
+    bottomNarBarcurrentIndex = index;
+    update();
   }
 
-  getSummizedNews(String description) {
-    summizedNews.value = "";
-    service.getSummizedNews(description: description).then((value) => value.fold(
-        (error) => log(error.toString()), (data) => {summizedNews.value = data?.choices?[0].message?.content ?? "", update()}));
+  void incrementPageIndex(int index) {
+    pageIndex = index;
+    update();
+  }
+
+  @override
+  getNews() async {
+    await service.getNews(category: "general").then((result) => result.fold(
+        (error) => error,
+        (data) => {
+              if (data?.articles != null) articlesList.value.addAll(data?.articles as List<Article>),
+              update(),
+              // isLoading = false,
+            }));
+  }
+
+  getSummarizedNews(String description) {
+    summarizedNews.value = "";
+    service.getSummarizedNews(description: description).then((value) => value.fold(
+        (error) => log(error.toString()), (data) => {summarizedNews.value = data?.choices?[0].message?.content ?? "", update()}));
+  }
+
+  void onPanUpdate(DragUpdateDetails details) {
+    if (details.delta.dy < 0) {
+      isExpanded.value = true;
+      update();
+    } else if (details.delta.dy > 0) {
+      isExpanded.value = false;
+      update();
+    }
   }
 }

@@ -17,7 +17,7 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
     //? Colors
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppColors.appBgColor,
+    scaffoldBackgroundColor: Colors.blueGrey,
 
     // primaryColor: AppColors.primaryColor,
     // splashColor: AppColors.splashColor,
@@ -37,7 +37,7 @@ class AppThemes {
     textTheme: const TextTheme(),
     //? App Bar
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.appBgColor,
+      backgroundColor: Colors.blueGrey,
       // foregroundColor: AppColors.appBarForegroundColor,
       elevation: AppValues.appBarButtonsElevation,
       toolbarHeight: AppValues.appBarHeight,
@@ -66,13 +66,13 @@ class AppThemes {
         ),
         borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
       ),
-      // focusedBorder: OutlineInputBorder(
-      //   borderSide: const BorderSide(
-      //     color: AppColors.bottomNavBarSelectedItemColor,
-      //     width: AppValues.textFieldBorderWidth,
-      //   ),
-      //   borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
-      // ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: Colors.white,
+          width: AppValues.textFieldBorderWidth,
+        ),
+        borderRadius: BorderRadius.circular(AppValues.textFieldRadius),
+      ),
       errorBorder: OutlineInputBorder(
         borderSide: const BorderSide(
           color: AppColors.errorColor,
@@ -109,7 +109,7 @@ class AppThemes {
     //? Elevated Button
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
+        backgroundColor: MaterialStateProperty.all(Colors.white),
         foregroundColor: MaterialStateProperty.all(Colors.white),
         overlayColor: MaterialStateProperty.all(AppColors.splashColor),
         shadowColor: MaterialStateProperty.all(AppColors.shadowColor),

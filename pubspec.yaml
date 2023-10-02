@@ -46,9 +46,11 @@ dependencies:
   dart_openai: ^4.0.0
   cached_network_image:
   mockito: ^5.4.2
+  redacted: ^1.0.11
 
   # firebase
-  firebase_auth: 
+  firebase_auth:
+  firebase_core:
 
 
 dev_dependencies:
