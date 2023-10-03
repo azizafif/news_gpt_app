@@ -22,8 +22,16 @@ class ScrollableColumn extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Container(
         margin: margin ?? EdgeInsets.zero,
-        padding: padding ?? const EdgeInsets.all(AppValues.bodyMinSymetricHorizontalPadding),
-        child: Form(key: formKey, child: Column(children: children)),
+        padding: padding ??
+            const EdgeInsets.only(
+                top: AppValues.bodyMinSymetricVerticalPadding, left: AppValues.bodyMinSymetricHorizontalPadding),
+        child: Form(
+            key: formKey,
+            child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: children)),
       ),
     );
   }

@@ -47,6 +47,7 @@ dependencies:
   cached_network_image:
   mockito: ^5.4.2
   redacted: ^1.0.11
+  fluttertoast: ^8.2.2
 
   # firebase
   firebase_auth:

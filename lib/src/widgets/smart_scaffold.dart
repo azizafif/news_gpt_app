@@ -73,7 +73,7 @@ class _DisconnectedWidget extends StatelessWidget {
                 BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: .5, sigmaY: .5),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppValues.bodyMaxSymetricHorizontalPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: AppValues.bodyMinSymetricVerticalPadding),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [

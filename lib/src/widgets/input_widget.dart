@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/services.dart';
 
 import '../shared/models/input_control.dart';
@@ -46,28 +48,45 @@ class _InputWidgetState extends State<Input> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: Theme.of(context).textTheme.subtitle1?.copyWith(height: 1.5),
-      enabled: widget.enabled,
-      controller: controller,
-      inputFormatters: widget.inputFormatters,
-      focusNode: node,
-      obscureText: !widget.isPassword ? false : protectedText,
-      keyboardType: widget.keyboardType,
-      onChanged: widget.onChanged,
-      validator: widget.validator,
-      autovalidateMode: AutovalidateMode.disabled,
-      onTap: widget.onTap,
-      maxLines: widget.isPassword ? 1 : widget.maxLines,
-      onEditingComplete: _onEditingComplete,
-      onFieldSubmitted: widget.onFieldSubmitted,
-      maxLength: widget.isPassword ? AppValues.passwordInputMaxLength : widget.maxLength,
-      decoration: _decoration(context),
-      buildCounter: (_, {int? currentLength, bool? isFocused, int? maxLength}) =>
-          (!widget.displayCounter || controller.text.isEmpty)
-              ? const SizedBox(height: 4)
-              : Text('$currentLength/$maxLength', style: Theme.of(context).textTheme.bodySmall),
-    );
+    Size size = MediaQuery.of(context).size;
+    return ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaY: 15,
+              sigmaX: 15,
+            ),
+            child: Container(
+                height: size.width / 8,
+                width: size.width / 1.2,
+                alignment: Alignment.center,
+                padding: EdgeInsets.only(right: size.width / 30),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(.05),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: TextFormField(
+                  style: Theme.of(context).textTheme.subtitle1?.copyWith(height: 1.5, color: Colors.white),
+                  enabled: widget.enabled,
+                  controller: controller,
+                  inputFormatters: widget.inputFormatters,
+                  focusNode: node,
+                  obscureText: !widget.isPassword ? false : protectedText,
+                  keyboardType: widget.keyboardType,
+                  onChanged: widget.onChanged,
+                  validator: widget.validator,
+                  autovalidateMode: AutovalidateMode.disabled,
+                  onTap: widget.onTap,
+                  maxLines: widget.isPassword ? 1 : widget.maxLines,
+                  onEditingComplete: _onEditingComplete,
+                  onFieldSubmitted: widget.onFieldSubmitted,
+                  maxLength: widget.isPassword ? AppValues.passwordInputMaxLength : widget.maxLength,
+                  decoration: _decoration(context),
+                  buildCounter: (_, {int? currentLength, bool? isFocused, int? maxLength}) =>
+                      (!widget.displayCounter || controller.text.isEmpty)
+                          ? const SizedBox(height: 4)
+                          : Text('$currentLength/$maxLength', style: Theme.of(context).textTheme.bodySmall),
+                ))));
   }
 
   void _onEditingComplete() {
@@ -77,9 +96,11 @@ class _InputWidgetState extends State<Input> {
 
   InputDecoration _decoration(BuildContext context) {
     return InputDecoration(
-      labelStyle: Theme.of(context).textTheme.bodyMedium,
-      label: Text(widget.labelText),
+      labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white.withOpacity(.8)),
+      //label: Text(widget.labelText),
       isDense: true,
+      hintText: widget.labelText,
+      hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white.withOpacity(.5)),
       prefixIcon: widget.prefixIcon,
       errorMaxLines: 3,
       contentPadding: EdgeInsets.only(right: widget.suffixIcon == null ? 26 : 0, top: 15, bottom: 6),

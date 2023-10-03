@@ -30,5 +30,5 @@ class LoginController extends ServingFormController<AuthService> {
   }
 
   void goToHome() => Get.offAllNamed(homeModule.name);
-  void goToSignUp() => Get.toNamed(signUpModule.name);
+  void goToSignUp() => Get.offAllNamed(signUpModule.name);
 }

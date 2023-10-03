@@ -2,7 +2,9 @@ import 'package:news_gpt/src/app/design/constants/app_contants.dart';
 import 'package:news_gpt/src/modules/profile/profile_screen.dart';
 import 'package:news_gpt/src/shared/screens/exports.dart';
 
+import '../../../main.dart';
 import '../../app/design/app_styles.dart';
+import '../../widgets/app_animated_bg.dart';
 import 'home_controller.dart';
 
 import 'widgets/news_widget.dart';
@@ -12,17 +14,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SmartScaffold(
-      appBar: const _CustomAppBar(),
-      body: GetBuilder<HomeController>(builder: (controller) {
-        final articlesList = controller.articlesList.value;
-        return controller.bottomNarBarcurrentIndex == 0
-            ? articlesList.isEmpty
-                ? const Center(child: CircularProgressIndicator.adaptive())
-                : NewsWidget(articles: articlesList)
-            : const ProfileScreen();
-      }),
-      bottomNavigationBar: const _CustomBottomNavigationBar(),
+    return AppAnimatedBg(
+      child: SmartScaffold(
+        backgroundColor: Colors.transparent,
+        appBar: const _CustomAppBar(),
+        body: GetBuilder<HomeController>(builder: (controller) {
+          final articlesList = controller.articlesList.value;
+          return controller.bottomNarBarcurrentIndex == 0
+              ? articlesList.isEmpty
+                  ? const Center(child: CircularProgressIndicator.adaptive())
+                  : NewsWidget(articles: articlesList)
+              : const ProfileScreen();
+        }),
+        bottomNavigationBar: const _CustomBottomNavigationBar(),
+      ),
+      //  ),
     );
   }
 }
