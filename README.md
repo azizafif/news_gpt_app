@@ -50,10 +50,12 @@ The News Summarizer with ChatGPT is a powerful tool that leverages OpenAI's Chat
 
 ## Installation
 
-Provide instructions on how to install your project. Include any prerequisites, dependencies, or system requirements. You can use code blocks to show installation commands if necessary:
+This is how to install the project and run it.
+Change the # chatGPTApiKey in the lib/src/app/app_environment.dart with your apiKey
 
 ```bash
-$ git clone https://github.com/yourusername/yourproject.git
-$ cd yourproject
-$ npm install
+$ git clone https://github.com/azizafif/news_gpt_app.git
+$ cd news_gpt
+$ flutter clean
+$ flutter pub get
 
