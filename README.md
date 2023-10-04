@@ -17,46 +17,46 @@ The News Summarizer with ChatGPT is a powerful tool that leverages OpenAI's Chat
 *Login Screen*
 
 
-<img src="screenshots/screen-1.png" width="500" alt="Screenshot 1">
+<img src="screenshots/screen-1.png" width="300" alt="Screenshot 1">
 
 
 
 
 *Sign up Screen*
 
-<img src="screenshots/screen-2.png" width="500" alt="Screenshot 2">
+<img src="screenshots/screen-2.png" width="300" alt="Screenshot 2">
 
 
 *Home Screen*
 
-<img src="screenshots/screen-3.png" width="500" alt="Screenshot 3">
+<img src="screenshots/screen-3.png" width="300" alt="Screenshot 3">
 
 
 
 
 *Home Screen*
 
-<img src="screenshots/screen-4.png" width="500" alt="Screenshot 4">
+<img src="screenshots/screen-4.png" width="300" alt="Screenshot 4">
 
 
 
 
 *Card Details*
 
-<img src="screenshots/screen-5.png" width="500" alt="Screenshot 5">
+<img src="screenshots/screen-5.png" width="300" alt="Screenshot 5">
 
 
 
 *Details Page*
 
-<img src="screenshots/screen-6.png" width="500" alt="Screenshot 6">
+<img src="screenshots/screen-6.png" width="300" alt="Screenshot 6">
 
 
 
 
 *Profile*
 
-<img src="screenshots/screen-7.png" width="500" alt="Screenshot 7">
+<img src="screenshots/screen-7.png" width="300" alt="Screenshot 7">
 
 
 
