@@ -7,10 +7,7 @@ The News Summarizer with ChatGPT is a powerful tool that leverages OpenAI's Chat
 
 - [Screenshots](#screenshots)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Screenshots
 
