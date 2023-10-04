@@ -17,7 +17,7 @@ The News Summarizer with ChatGPT is a powerful tool that leverages OpenAI's Chat
 *Login Screen*
 
 ![Screenshot 1](screenshots/screen-1.png)
-<img src="screenshots/screen-1.png" width="500" alt="Screenshot 1">
+<img src="screenshots/screen-1.png" width="300" alt="Screenshot 1">
 
 
 
