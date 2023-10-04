@@ -12,12 +12,9 @@ import '../modules/authentication/data/services/auth_service.dart';
 import '../modules/authentication/login/module/login_module.dart';
 import '../modules/authentication/signup/module/signUp_module.dart';
 import '../modules/profile/profile_module.dart';
-import '../shared/handlers/connectivity_handler.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key}) {
-    ConnectivityHandler.startMonitoring();
-  }
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -43,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           //$ Theme management
           theme: AppThemes.lightTheme,
           themeMode: AppThemes.themeMode,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news_gpt/src/modules/home/data/models/news_model.dart';
 import 'package:news_gpt/src/modules/home/home_controller.dart';
 import 'package:news_gpt/src/utils/extensions/index.dart';
-import 'package:redacted/redacted.dart';
 
 import 'news_card.dart';
 
