@@ -16,7 +16,7 @@ The News Summarizer with ChatGPT is a powerful tool that leverages OpenAI's Chat
 
 Include screenshots or images that showcase your project's interface or functionality. You can use the following format to embed images:
 
-![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 1](screenshots/screen-1.png)
 *Caption for Screenshot 1*
 
 ![Screenshot 2](screenshots/screenshot2.png)
