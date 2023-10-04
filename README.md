@@ -64,7 +64,7 @@ Change the *chatGPTApiKey* in the lib/src/app/app_environment.dart with your api
 
 ```bash
 $ git clone https://github.com/azizafif/news_gpt_app.git
-$ cd news_gpt
+$ cd news_gpt_app
 $ flutter clean
 $ flutter pub get
 
